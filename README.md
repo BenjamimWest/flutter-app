@@ -1,4 +1,3 @@
-# flutter-app
-Meu primeiro aplicativo flutter versionado no Github.
+# flutter_app
 
-Aplicativo Flutter Multiplataforma responsivo.
+A new Flutter project.
