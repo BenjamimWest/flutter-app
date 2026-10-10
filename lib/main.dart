@@ -1,26 +1,39 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/home.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp( MainApp());
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
- void naoFazNada(){} 
- 
+
+  void naoFazNada(){}
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange)
-      ),
-      home: Scaffold(
-        body: Center(
-          child: ElevatedButton(onPressed: naoFazNada , child: Text("Meu Botão")
-          )
-         ,),
+    return ChangeNotifierProvider(
+      create: (context) => MainAppState(),
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        ),
+        home: HomePage(),
       ),
     );
   }
+}
+
+class MainAppState extends ChangeNotifier{
+  var palavraAtual = WordPair.random();
+
+ void geraNovaPalavra(){
+  palavraAtual =WordPair.random();
+  notifyListeners();
+ }
+
 }
